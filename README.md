@@ -17,7 +17,7 @@ In this project, the radix-2 DIT FFT is implemented from scratch instead of usin
 
 The DFT of a signal is given by:
 
-X(k) = X(k)=n=0∑N−1​x(n)e−j2πkn/N
+X(k) = Σ_{n=0}^{N-1} x(n) e^{-j2πkn/N}
 
 This equation basically tells how much of each frequency is present in the signal.
 
