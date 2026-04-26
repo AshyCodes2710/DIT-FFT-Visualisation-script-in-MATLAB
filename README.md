@@ -8,7 +8,9 @@ Fast Fourier Transform, DIT FFT, Bit Reversal, Butterfly Operation, Signal Proce
 
 # I. INTRODUCTION
 
-The Fast Fourier Transform (FFT) is a very important algorithm in digital signal processing. It is used to convert a signal from time domain into frequency domain. Normally, the Discrete Fourier Transform (DFT) takes a lot of computation (around O(N2)), which becomes slow for large signals. FFT improves this by reducing the complexity to O(NlogN).
+The Fast Fourier Transform (FFT) is a very important algorithm in digital signal processing. It is used to convert a signal from time domain into frequency domain. Normally, the Discrete Fourier Transform (DFT) takes a lot of computation (around O(N^2)), which becomes slow for large signals. FFT improves this by reducing the complexity to O(NlogN).
+
+![O(N^2) to O(N log N)](plots/timecomplexityhandwritten.png)
 
 In this project, the radix-2 DIT FFT is implemented from scratch instead of using any built-in functions. The main goal was not just to compute FFT, but also to understand how it actually works internally. For that reason, stage-wise visualization was also done.
 
@@ -17,7 +19,7 @@ In this project, the radix-2 DIT FFT is implemented from scratch instead of usin
 
 The DFT of a signal is given by:
 
-X(k) = Σ_{n=0}^{N-1} x(n) e^{-j2πkn/N}
+![X(k) = sum from n=0 to N-1 of x(n) * e^(-j 2πkn/N))](plots/dftformulahandwritten.png)
 
 This equation basically tells how much of each frequency is present in the signal.
 
@@ -33,7 +35,7 @@ Before applying FFT, the input signal needs to be rearranged. This is done using
 
 The butterfly is the main computation step in FFT. It takes two values and combines them using addition and subtraction along with a rotation factor called the twiddle factor.
 
-X1​X2​​=a+W⋅b=a−W⋅b​
+![X1 = a + Wb \n X2 = a - Wb](plots/butterflyoperationhandwritten.png)
 
 This operation is repeated multiple times across stages.
 
@@ -52,9 +54,9 @@ The signal is reordered using reversed binary indices.
 
 #### FFT Computation
 The FFT is computed iteratively using loops:
-> Each stage increases the group size
-> Butterfly operations are applied
-> Twiddle factors are used for rotation
+- Each stage increases the group size
+- Butterfly operations are applied
+- Twiddle factors are used for rotation
 
 #### Stage Storage
 The output after each stage is stored so that it can be visualized later.
